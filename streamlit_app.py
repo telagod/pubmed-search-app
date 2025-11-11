@@ -1404,6 +1404,19 @@ def page_about():
     st.success("💡 使用左侧导航栏探索不同功能")
 
 
+# ==================== 自定义侧边导航（中文标签） ====================
+def render_sidebar_nav():
+    st.sidebar.markdown("### 导航")
+    st.sidebar.page_link("streamlit_app.py", label="首页")
+    st.sidebar.page_link("pages/01_data.py", label="💾 数据管理")
+    st.sidebar.page_link("pages/02_dashboard.py", label="📊 仪表盘")
+    st.sidebar.page_link("pages/03_search.py", label="🔍 高级搜索")
+    st.sidebar.page_link("pages/04_browser.py", label="📚 文献浏览")
+    st.sidebar.page_link("pages/05_analysis.py", label="📈 数据分析")
+    st.sidebar.page_link("pages/06_settings.py", label="⚙️ 设置")
+    st.sidebar.page_link("pages/07_about.py", label="ℹ️ 关于")
+
+
 # ==================== 主应用（多页入口） ====================
 def main():
     st.sidebar.title("🔎 PubMed 检索 v3.3")
@@ -1420,14 +1433,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-# ==================== 自定义侧边导航（中文标签） ====================
-def render_sidebar_nav():
-    st.sidebar.markdown("### 导航")
-    st.sidebar.page_link("streamlit_app.py", label="首页")
-    st.sidebar.page_link("pages/01_data.py", label="💾 数据管理")
-    st.sidebar.page_link("pages/02_dashboard.py", label="📊 仪表盘")
-    st.sidebar.page_link("pages/03_search.py", label="🔍 高级搜索")
-    st.sidebar.page_link("pages/04_browser.py", label="📚 文献浏览")
-    st.sidebar.page_link("pages/05_analysis.py", label="📈 数据分析")
-    st.sidebar.page_link("pages/06_settings.py", label="⚙️ 设置")
-    st.sidebar.page_link("pages/07_about.py", label="ℹ️ 关于")
