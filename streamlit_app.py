@@ -1052,35 +1052,49 @@ def page_dashboard():
 
     with col_kw:
         st.markdown("**Top 15 关键词**")
-        top_keywords = db.get_top_keywords(15)
-        if top_keywords:
-            kw_df = pd.DataFrame(top_keywords, columns=['关键词', '频次'])
-            fig = px.bar(
-                kw_df,
-                x='频次',
-                y='关键词',
-                orientation='h',
-                color='频次',
-                color_continuous_scale='Viridis'
-            )
-            fig.update_layout(showlegend=False, height=400)
-            st.plotly_chart(fig, use_container_width=True)
+        df_all = get_all_papers_cached(str(p), p.stat().st_mtime, get_cache_token())
+        if not df_all.empty and 'keywords' in df_all.columns:
+            words = []
+            for xs in df_all['keywords']:
+                if isinstance(xs, list):
+                    words.extend(xs)
+            cnt = Counter(words)
+            top_keywords = cnt.most_common(15)
+            if top_keywords:
+                kw_df = pd.DataFrame(top_keywords, columns=['关键词', '频次'])
+                fig = px.bar(
+                    kw_df,
+                    x='频次',
+                    y='关键词',
+                    orientation='h',
+                    color='频次',
+                    color_continuous_scale='Viridis'
+                )
+                fig.update_layout(showlegend=False, height=400)
+                st.plotly_chart(fig, use_container_width=True)
 
     with col_mesh:
         st.markdown("**Top 15 MeSH主题词**")
-        top_mesh = db.get_top_mesh_terms(15)
-        if top_mesh:
-            mesh_df = pd.DataFrame(top_mesh, columns=['MeSH主题词', '频次'])
-            fig = px.bar(
-                mesh_df,
-                x='频次',
-                y='MeSH主题词',
-                orientation='h',
-                color='频次',
-                color_continuous_scale='Plasma'
-            )
-            fig.update_layout(showlegend=False, height=400)
-            st.plotly_chart(fig, use_container_width=True)
+        df_all = get_all_papers_cached(str(p), p.stat().st_mtime, get_cache_token())
+        if not df_all.empty and 'mesh_terms' in df_all.columns:
+            terms = []
+            for xs in df_all['mesh_terms']:
+                if isinstance(xs, list):
+                    terms.extend(xs)
+            cnt = Counter(terms)
+            top_mesh = cnt.most_common(15)
+            if top_mesh:
+                mesh_df = pd.DataFrame(top_mesh, columns=['MeSH主题词', '频次'])
+                fig = px.bar(
+                    mesh_df,
+                    x='频次',
+                    y='MeSH主题词',
+                    orientation='h',
+                    color='频次',
+                    color_continuous_scale='Plasma'
+                )
+                fig.update_layout(showlegend=False, height=400)
+                st.plotly_chart(fig, use_container_width=True)
 
 
 def page_browser():
