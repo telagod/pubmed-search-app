@@ -1407,7 +1407,8 @@ def page_about():
 # ==================== 主应用（多页入口） ====================
 def main():
     st.sidebar.title("🔎 PubMed 检索 v3.3")
-    st.sidebar.info("💡 使用左侧 Pages 导航访问各功能页面")
+    render_sidebar_nav()
+    st.sidebar.info("💡 使用左侧导航菜单访问各功能页面")
     st.sidebar.markdown("---")
     st.sidebar.markdown(
         '<p style="text-align: center; color: #999; font-size: 0.8rem;">© 2025 KOOI Research Assistant</p>',
