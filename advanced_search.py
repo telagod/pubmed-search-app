@@ -358,7 +358,7 @@ if __name__ == "__main__":
     if valid:
         # 测试查询构建
         query = engine.build_query(
-            keywords=['BMAL1', 'Alzheimer'],
+            keywords=['TP53', 'cancer'],
             logic='AND'
         )
         print(f"构建的查询: {query}\n")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-BMAL1文献检索系统 - v3.1 最佳实践版
+通用 PubMed 文献检索系统 - v3.3 最佳实践版
 ========================================
 特性:
 - 本地化数据管理,不占用云端资源
@@ -14,7 +14,7 @@ BMAL1文献检索系统 - v3.1 最佳实践版
 
 作者: KOOI Research Assistant
 日期: 2025-11-10
-版本: v3.1
+版本: v3.3
 """
 
 import streamlit as st
@@ -37,7 +37,7 @@ from local_data_manager import get_data_manager
 
 # ==================== 页面配置 ====================
 st.set_page_config(
-    page_title="BMAL1高级文献检索系统",
+    page_title="PubMed 文献检索系统",
     page_icon="🧬",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -334,7 +334,7 @@ def page_data_management():
 
     st.markdown("""
     <div class="info-box">
-    💡 <b>v3.1 核心理念</b>: 数据本地化管理,不占用云端资源
+    💡 <b>v3.3 核心理念</b>: 数据本地化管理,不占用云端资源
     <br><br>
     <b>使用流程</b>:
     <br>1. 上传已有数据库文件(如果有)
@@ -661,9 +661,9 @@ def _simple_search_form(config_manager):
 
         query = st.text_area(
             "🔎 查询字符串",
-            value="BMAL1 AND Alzheimer",
+            value="TP53 AND cancer",
             height=100,
-            help="输入PubMed查询字符串,例如: BMAL1 AND (circadian OR clock)"
+            help="输入PubMed查询字符串,例如: TP53 AND (cancer OR tumor)"
         )
 
         col1, col2, col3 = st.columns(3)
@@ -725,7 +725,7 @@ def _advanced_search_form(config_manager):
         with col1:
             keywords_input = st.text_input(
                 "关键词（用逗号分隔）",
-                value="BMAL1, circadian, clock",
+                value="TP53, cancer, biomarker",
                 help="输入多个关键词,用逗号分隔"
             )
 
@@ -919,7 +919,7 @@ def _execute_search(config_manager, query: str, name: str,
                     for format_type, filepath in result['exported_files'].items():
                         st.markdown(f"- {format_type.upper()}: `{Path(filepath).name}`")
 
-                # v3.1: 提示下载数据库
+                # v3.3: 提示下载数据库
                 st.markdown("---")
                 st.markdown("""
                 <div class="info-box">
@@ -957,7 +957,7 @@ def _execute_search(config_manager, query: str, name: str,
 
 def page_dashboard():
     """Dashboard页面"""
-    st.markdown('<p class="main-header">🧬 BMAL1文献检索系统 Dashboard</p>',
+    st.markdown('<p class="main-header">🔎 PubMed 文献检索 Dashboard</p>',
                 unsafe_allow_html=True)
 
     # 绑定数据库路径, 确保切换后缓存失效
@@ -1307,11 +1307,11 @@ def page_about():
     st.markdown('<p class="main-header">ℹ️ 关于本系统</p>', unsafe_allow_html=True)
 
     st.markdown("""
-    ## 🧬 BMAL1文献检索系统 - v3.1 最佳实践版
+    ## 🔎 通用 PubMed 文献检索系统 - v3.3 最佳实践版
 
     ### 📖 项目简介
 
-    本系统是一个功能强大的PubMed文献检索和分析平台,专为BMAL1相关研究设计。
+    本系统是一个面向各类主题的通用PubMed文献检索与分析平台。
 
     ### ✨ 主要功能
 
@@ -1323,7 +1323,7 @@ def page_about():
     - **📊 数据分析**: 多维度可视化分析
     - **🌙 深色模式**: 默认深色主题,更适合长时间阅读
 
-    ### 🆕 v3.1 新特性
+    ### 🆕 v3.3 新特性
 
     1. **数据本地化**: 上传/下载数据库,完全控制自己的数据
     2. **零云端占用**: 不依赖Streamlit Cloud持久化存储
@@ -1355,7 +1355,7 @@ def page_about():
     ### 👨‍💻 开发信息
 
     - **作者**: KOOI Research Assistant ฅ'ω'ฅ
-    - **版本**: v3.1 (最佳实践版)
+    - **版本**: v3.3 (最佳实践版)
     - **更新时间**: 2025-11-10
     - **数据来源**: PubMed/NCBI
     """)
@@ -1380,15 +1380,15 @@ def page_about():
 
 # ==================== 主应用（多页入口） ====================
 def main():
-    st.sidebar.title("🧬 BMAL1高级检索 v3.1")
+    st.sidebar.title("🔎 PubMed 检索 v3.3")
     st.sidebar.info("💡 使用左侧 Pages 导航访问各功能页面")
     st.sidebar.markdown("---")
     st.sidebar.markdown(
         '<p style="text-align: center; color: #999; font-size: 0.8rem;">© 2025 KOOI Research Assistant</p>',
         unsafe_allow_html=True
     )
-    st.markdown('<p class="main-header">🧬 BMAL1文献检索系统</p>', unsafe_allow_html=True)
-    st.success("欢迎使用 v3.1 最佳实践版。请通过左侧 Pages 进入各页面。")
+    st.markdown('<p class="main-header">🔎 通用 PubMed 文献检索系统</p>', unsafe_allow_html=True)
+    st.success("欢迎使用 v3.3 最佳实践版。请通过左侧 Pages 进入各页面。")
 
 
 if __name__ == "__main__":

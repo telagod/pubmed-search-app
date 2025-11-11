@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-BMAL1文献检索系统 - 优化版 v2.0
-==================================
+通用文献检索系统 - 优化版 v2.0
+===============================
 特性:
 - 使用dataclass进行数据建模
 - 健壮的文献解析（处理多种格式）
@@ -45,11 +45,11 @@ def setup_logging(log_dir: Path):
 
 # ==================== 数据模型 ====================
 class SearchStrategy(Enum):
-    """检索策略枚举"""
-    CIRCADIAN = "BMAL1 AND (circadian OR clock)"
-    ALZHEIMER = "BMAL1 AND Alzheimer"
-    GLYMPHATIC = "BMAL1 AND (glymphatic OR clearance)"
-    BBB = "BMAL1 AND (astrocyte OR BBB OR blood-brain barrier)"
+    """检索策略枚举（示例）"""
+    EXAMPLE_ONCO = "TP53 AND (cancer OR tumor)"
+    EXAMPLE_NEURO = "Alzheimer AND amyloid"
+    EXAMPLE_IMMUNE = "T cell AND cytokine"
+    EXAMPLE_METHOD = "single-cell AND RNA-seq"
 
 
 @dataclass
@@ -778,7 +778,7 @@ def load_env(env_path: Path) -> Dict[str, str]:
 def main():
     """主函数 - 执行完整检索流程"""
     print("=" * 70)
-    print("🧬 BMAL1文献检索系统 v2.0 - 优化版")
+    print("🔎 通用文献检索系统 v2.0 - 优化版")
     print("=" * 70)
     print()
 

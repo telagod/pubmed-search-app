@@ -1,9 +1,9 @@
 # 🚀 Streamlit Cloud 部署指南
 
-**项目**: BMAL1 PubMed Search System v3.1 (最佳实践版)
+**项目**: 通用 PubMed 文献检索系统 v3.3 (最佳实践版)
 **仓库**: https://github.com/telagod/bmal1-pubmed-search
 
-## 🆕 v3.1 特性
+## 🆕 v3.3 特性
 
 - **💾 数据本地化**: 上传/下载数据库,完全控制自己的数据
 - **零云端占用**: 不依赖Streamlit Cloud持久化存储
@@ -145,9 +145,9 @@ Streamlit Cloud会自动检测到更新并重新部署。
 - 确保Email和API Key有效
 - 重启应用
 
-#### 3. v3.1 数据管理说明
+#### 3. v3.3 数据管理说明
 
-**v3.1核心理念**: 数据完全本地化,不占用云端资源
+**v3.3核心理念**: 数据完全本地化,不占用云端资源
 
 **使用流程**:
 - 首次使用:
@@ -169,7 +169,7 @@ Streamlit Cloud会自动检测到更新并重新部署。
 
 ---
 
-## 🎯 v3.1 最佳实践
+## 🎯 v3.3 最佳实践
 
 ### 1. 数据管理策略
 
@@ -196,7 +196,7 @@ Streamlit Cloud会自动检测到更新并重新部署。
 
 ### 4. 性能优化
 
-- v3.1已使用 `@st.cache_resource` 缓存数据
+- v3.3已使用 `@st.cache_resource` 缓存数据
 - 数据库使用临时文件,自动管理
 - 合理设置搜索参数,避免过大查询
 - 云端零存储占用,无性能负担
@@ -248,7 +248,7 @@ https://share.streamlit.io/telagod/bmal1-pubmed-search/main/streamlit_app.py
 
 ---
 
-## ✅ v3.1 部署检查清单
+## ✅ v3.3 部署检查清单
 
 部署前请确认：
 
@@ -262,7 +262,7 @@ https://share.streamlit.io/telagod/bmal1-pubmed-search/main/streamlit_app.py
 
 部署后请验证：
 
-- [ ] 应用成功启动,显示v3.1版本
+- [ ] 应用成功启动,显示v3.3版本
 - [ ] 首页是"💾 数据管理"
 - [ ] 深色模式正常显示
 - [ ] 设置页面可以正常访问
@@ -271,7 +271,7 @@ https://share.streamlit.io/telagod/bmal1-pubmed-search/main/streamlit_app.py
 - [ ] 数据库上传/下载功能正常
 - [ ] 搜索后提示下载数据库
 
-### v3.1 新功能验证
+### v3.3 新功能验证
 
 - [ ] "💾 数据管理"页面正常显示
 - [ ] 可以上传.db文件
