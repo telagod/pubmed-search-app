@@ -195,6 +195,7 @@ uv run streamlit run streamlit_app.py
 
 # 应用会自动在浏览器打开，地址通常为:
 # http://localhost:8501
+# 使用左侧 Pages 导航切换页面（数据管理 / Dashboard / 高级搜索 / 文献浏览 / 数据分析 / 设置 / 关于）
 ```
 
 详细使用指南请参考: [STREAMLIT_GUIDE.md](STREAMLIT_GUIDE.md)
