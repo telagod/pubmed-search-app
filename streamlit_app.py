@@ -443,19 +443,18 @@ def page_data_management():
                 )
 
         with col2:
-            # 清空数据库
+            # 清空数据库（双击确认，无 else，使用提前返回）
             if st.button("🗑️ 清空当前数据库", use_container_width=True, type="secondary"):
-            if 'confirm_clear' not in st.session_state:
-                st.session_state['confirm_clear'] = False
-
-            if not st.session_state['confirm_clear']:
-                st.session_state['confirm_clear'] = True
+                if 'confirm_clear' not in st.session_state:
+                    st.session_state['confirm_clear'] = False
+                if not st.session_state['confirm_clear']:
+                    st.session_state['confirm_clear'] = True
                     st.warning("⚠️ 再次点击确认清空数据库")
-                else:
-                    data_manager.clear_database()
+                    return
+                data_manager.clear_database()
                 st.session_state['confirm_clear'] = False
-                    st.success("✅ 数据库已清空")
-                    st.rerun()
+                st.success("✅ 数据库已清空")
+                st.rerun()
 
     else:
         st.markdown("""
