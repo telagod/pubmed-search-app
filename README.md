@@ -23,7 +23,7 @@
 
 #### 脚本说明
 
-**v1脚本** - `archive/pubmed_search_bmal1.py` (已废弃)
+**v1脚本** - 已废弃（已移除）
 - 初始版本，存在解析错误问题
 
 **v2脚本** - `pubmed_search_v2.py` ⭐ (当前版本)
@@ -56,7 +56,6 @@ workflow/
 ├── STREAMLIT_DEPLOY.md           # 部署与使用
 ├── CHANGELOG_V3.1.md             # 变更日志
 ├── RELEASE_v3.1.md               # Release 文案
-├── archive/                      # 旧版脚本与历史文档（已忽略）
 └── README.md                     # 本文件
 ```
 
@@ -200,7 +199,6 @@ uv run streamlit run streamlit_app.py
 ```
 
 使用说明与部署: [STREAMLIT_DEPLOY.md](STREAMLIT_DEPLOY.md)
-更多历史文档见: `archive/docs/`
 
 ### 配置要求
 - `.env` 文件（位于项目根目录）包含:
