@@ -318,18 +318,19 @@ def filter_papers_df(df: pd.DataFrame, keyword: str = "", strategy: str = "", ye
 def get_cache_token() -> str:
     """返回当前数据缓存令牌，用于手动失效缓存"""
     if 'db_token' not in st.session_state:
-        st.session_state.db_token = '0'
-    return st.session_state.db_token
+        st.session_state['db_token'] = '0'
+    return st.session_state['db_token']
 
 
 def bump_cache_token():
     """递增缓存令牌以触发缓存失效"""
-    st.session_state.db_token = datetime.now().isoformat()
+    st.session_state['db_token'] = datetime.now().isoformat()
 
 
 # ==================== 页面：数据管理 (首页) ====================
 def page_data_management():
     """数据管理页面"""
+    render_sidebar_nav()
     st.markdown('<p class="main-header">💾 数据管理</p>', unsafe_allow_html=True)
 
     st.markdown("""
@@ -444,15 +445,15 @@ def page_data_management():
         with col2:
             # 清空数据库
             if st.button("🗑️ 清空当前数据库", use_container_width=True, type="secondary"):
-                if 'confirm_clear' not in st.session_state:
-                    st.session_state.confirm_clear = False
+            if 'confirm_clear' not in st.session_state:
+                st.session_state['confirm_clear'] = False
 
-                if not st.session_state.confirm_clear:
-                    st.session_state.confirm_clear = True
+            if not st.session_state['confirm_clear']:
+                st.session_state['confirm_clear'] = True
                     st.warning("⚠️ 再次点击确认清空数据库")
                 else:
                     data_manager.clear_database()
-                    st.session_state.confirm_clear = False
+                st.session_state['confirm_clear'] = False
                     st.success("✅ 数据库已清空")
                     st.rerun()
 
@@ -471,6 +472,7 @@ def page_data_management():
 # ==================== 页面:设置 ====================
 def page_settings():
     """设置页面"""
+    render_sidebar_nav()
     st.markdown('<p class="main-header">⚙️ 系统设置</p>', unsafe_allow_html=True)
 
     config_manager = init_config_manager()
@@ -623,6 +625,7 @@ def page_settings():
 # ==================== 页面:高级搜索 ====================
 def page_advanced_search():
     """高级搜索页面"""
+    render_sidebar_nav()
     st.markdown('<p class="main-header">🔍 高级搜索</p>', unsafe_allow_html=True)
 
     config_manager = init_config_manager()
@@ -957,6 +960,7 @@ def _execute_search(config_manager, query: str, name: str,
 
 def page_dashboard():
     """Dashboard页面"""
+    render_sidebar_nav()
     st.markdown('<p class="main-header">🔎 PubMed 文献检索 Dashboard</p>',
                 unsafe_allow_html=True)
 
@@ -1099,6 +1103,7 @@ def page_dashboard():
 
 def page_browser():
     """文献浏览器页面"""
+    render_sidebar_nav()
     st.markdown('<p class="main-header">📚 文献浏览器</p>', unsafe_allow_html=True)
 
     dm = get_data_manager()
@@ -1225,6 +1230,7 @@ def display_paper_card(paper):
 
 def page_analysis():
     """数据分析页面"""
+    render_sidebar_nav()
     st.markdown('<p class="main-header">📈 数据分析</p>', unsafe_allow_html=True)
 
     dm = get_data_manager()
@@ -1318,6 +1324,7 @@ def page_analysis():
 
 def page_about():
     """关于页面"""
+    render_sidebar_nav()
     st.markdown('<p class="main-header">ℹ️ 关于本系统</p>', unsafe_allow_html=True)
 
     st.markdown("""
@@ -1407,3 +1414,14 @@ def main():
 
 if __name__ == "__main__":
     main()
+# ==================== 自定义侧边导航（中文标签） ====================
+def render_sidebar_nav():
+    st.sidebar.markdown("### 导航")
+    st.sidebar.page_link("streamlit_app.py", label="首页")
+    st.sidebar.page_link("pages/01_data.py", label="💾 数据管理")
+    st.sidebar.page_link("pages/02_dashboard.py", label="📊 仪表盘")
+    st.sidebar.page_link("pages/03_search.py", label="🔍 高级搜索")
+    st.sidebar.page_link("pages/04_browser.py", label="📚 文献浏览")
+    st.sidebar.page_link("pages/05_analysis.py", label="📈 数据分析")
+    st.sidebar.page_link("pages/06_settings.py", label="⚙️ 设置")
+    st.sidebar.page_link("pages/07_about.py", label="ℹ️ 关于")
