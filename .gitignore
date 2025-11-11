@@ -73,3 +73,6 @@ desktop.ini
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Archive (legacy code and docs)
+archive/

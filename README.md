@@ -45,18 +45,19 @@
 #### 输出结构
 ```
 workflow/
-├── archive/pubmed_search_bmal1.py  # v1检索脚本（已废弃）
-├── pubmed_search_v2.py         # v2检索脚本（优化版）⭐
-├── streamlit_app.py            # Streamlit可视化应用 🎨
-├── STREAMLIT_GUIDE.md          # 可视化使用指南
-├── results/                    # 结果目录
-│   ├── bmal1_*.json            # JSON格式结果
-│   ├── bmal1_*.md              # Markdown格式结果
-│   ├── bmal1_*.csv             # CSV格式结果
-│   ├── search_summary_*.json   # 检索摘要
-│   ├── bmal1_papers.db         # SQLite数据库 💾
-│   └── pubmed_search_*.log     # 日志文件
-└── README.md                   # 本文件
+├── streamlit_app.py              # 主入口（多页架构）
+├── pages/                        # 原生 Pages 页面
+├── advanced_search.py            # 高级检索引擎
+├── config_manager.py             # 配置管理（Secrets 优先）
+├── local_data_manager.py         # 本地数据库管理
+├── pubmed_search_v2.py           # v2 检索脚本（优化版）⭐
+├── .streamlit/config.toml        # 主题与服务器配置
+├── requirements.txt              # 依赖
+├── STREAMLIT_DEPLOY.md           # 部署与使用
+├── CHANGELOG_V3.1.md             # 变更日志
+├── RELEASE_v3.1.md               # Release 文案
+├── archive/                      # 旧版脚本与历史文档（已忽略）
+└── README.md                     # 本文件
 ```
 
 ## ✅ 已完成工作
@@ -198,7 +199,8 @@ uv run streamlit run streamlit_app.py
 # 使用左侧 Pages 导航切换页面（数据管理 / Dashboard / 高级搜索 / 文献浏览 / 数据分析 / 设置 / 关于）
 ```
 
-详细使用指南请参考: [STREAMLIT_GUIDE.md](STREAMLIT_GUIDE.md)
+使用说明与部署: [STREAMLIT_DEPLOY.md](STREAMLIT_DEPLOY.md)
+更多历史文档见: `archive/docs/`
 
 ### 配置要求
 - `.env` 文件（位于项目根目录）包含:
