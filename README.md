@@ -41,8 +41,6 @@ workflow/
 ├── .streamlit/config.toml        # 主题与服务器配置
 ├── requirements.txt              # 依赖
 ├── STREAMLIT_DEPLOY.md           # 部署与使用
-├── CHANGELOG_V3.1.md             # 变更日志
-├── RELEASE_v3.1.md               # Release 文案
 └── README.md                     # 本文件
 ```
 
@@ -115,7 +113,6 @@ uv run streamlit run streamlit_app.py
   - `api_key`: NCBI API密钥
 
 ## 版本
-- v3.3：通用化、Pages 架构、缓存与数据本地化
-- v3.2：多页与缓存优化、清理归档
-- v3.1：最佳实践版（数据本地化）
+发行说明请查看 GitHub Releases:
+https://github.com/telagod/pubmed-search-app/releases
 - Salminen, A. (2024). Aryl hydrocarbon receptor impairs circadian regulation in Alzheimer's disease: Potential impact on glymphatic system dysfunction. European Journal of Neuroscience, 60(2), 3901–3920.
