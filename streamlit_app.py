@@ -46,6 +46,12 @@ st.set_page_config(
 # ==================== 自定义CSS (深色模式优化) ====================
 st.markdown("""
 <style>
+    :root {
+        /* 显式设置侧边栏相关主题色，避免云端某些版本解析为空触发控制台警告 */
+        --sidebar-widgetBackgroundColor: #262730;
+        --sidebar-widgetBorderColor: #3a3a3a;
+        --sidebar-skeletonBackgroundColor: #1b1e24;
+    }
     .main-header {
         font-size: 2.5rem;
         font-weight: bold;
